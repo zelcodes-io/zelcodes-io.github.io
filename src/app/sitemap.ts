@@ -4,7 +4,9 @@ import { blogPosts } from "@/lib/blog";
 
 export const dynamic = "force-static";
 
-const base = "https://zelcodes.com";
+import { SITE_URL } from "@/lib/links";
+
+const base = SITE_URL;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

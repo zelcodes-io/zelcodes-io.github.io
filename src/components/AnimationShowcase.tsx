@@ -5,7 +5,11 @@ import { motion } from "framer-motion";
 import { animations, categories } from "@/lib/animations";
 import { AnimationCard } from "./AnimationCard";
 
-const filters = ["All", ...categories];
+// Only offer filters that have a few animations behind them.
+const filters = [
+  "All",
+  ...categories.filter((c) => animations.filter((a) => a.category === c).length >= 3),
+];
 
 export function AnimationShowcase() {
   const [active, setActive] = useState<string>("All");
@@ -38,8 +42,9 @@ export function AnimationShowcase() {
           The Zelcodes <span className="text-gradient">animation library</span>
         </h2>
         <p className="mt-4 text-muted">
-          From tab-bar micro-interactions to full-screen hero transitions —
-          every animation ships with clean, idiomatic SwiftUI source.
+          From tab-bar micro-interactions to full-screen hero transitions. Every
+          animation is a complete SwiftUI project (iOS 27) with a 1:1 Flutter
+          port. Buy one for $3.99, or get them all with Pro.
         </p>
       </motion.div>
 
@@ -71,8 +76,8 @@ export function AnimationShowcase() {
       </div>
 
       <p className="mt-12 text-center text-sm text-muted">
-        + hundreds more building in the library — join Patreon to unlock every
-        source file.
+        New animations are added regularly, and Pro members get every one of
+        them.
       </p>
     </section>
   );

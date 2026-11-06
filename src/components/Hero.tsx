@@ -5,7 +5,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { MeshGradient } from "./MeshGradient";
 import { HeroCarousel } from "./HeroCarousel";
-import { PATREON_URL } from "@/lib/links";
+import { PRO_CHECKOUT_URL, PRO_MONTHLY_PRICE } from "@/lib/links";
+import { animations } from "@/lib/animations";
 
 export function Hero() {
   return (
@@ -21,18 +22,19 @@ export function Hero() {
         >
           <span className="glass inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs text-muted">
             <Sparkles size={12} className="text-brand" />
-            Hand-crafted SwiftUI animations · updated weekly
+            SwiftUI (iOS 27) + Flutter · Liquid Glass ready
           </span>
 
           <h1 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-            <span className="text-gradient">500+ UI Animations</span>
+            <span className="text-gradient">{animations.length} iOS animations</span>
             <br />
-            for SwiftUI developers
+            in SwiftUI and Flutter
           </h1>
 
           <p className="mx-auto mt-5 max-w-xl text-base text-muted sm:text-lg">
-            Copy, customize, and ship faster with ready-to-use animation code —
-            transitions, tab bars, sheets, onboarding flows and more.
+            Liquid Glass tab bars, Dynamic Island toasts, App Store-style hero
+            transitions, paywalls and more. Every one is a complete Xcode project
+            with a 1:1 Flutter port, ready to drop into your app.
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -47,21 +49,21 @@ export function Hero() {
               />
             </Link>
             <a
-              href={PATREON_URL}
+              href={PRO_CHECKOUT_URL}
               target="_blank"
               rel="noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full border border-surface-border bg-surface px-6 py-3 text-sm font-medium backdrop-blur-md transition hover:border-patreon/60"
+              className="group inline-flex items-center gap-2 rounded-full border border-surface-border bg-surface px-6 py-3 text-sm font-medium backdrop-blur-md transition hover:border-brand/60"
             >
               <span
                 aria-hidden
-                className="inline-block h-2 w-2 rounded-full bg-patreon"
+                className="inline-block h-2 w-2 rounded-full bg-gradient-to-br from-brand to-brand-2"
               />
-              Unlock All on Patreon
+              Get Zelcodes Pro · {PRO_MONTHLY_PRICE}/mo
             </a>
           </div>
 
           <p className="mt-5 text-xs text-muted">
-            Production-ready Swift code · SwiftUI 5+ · iOS 17+ · macOS 14+
+            No dependencies · use in commercial apps · secure checkout by Polar
           </p>
         </motion.div>
 
@@ -85,9 +87,9 @@ export function Hero() {
           className="relative z-10 mx-auto mt-14 grid max-w-3xl grid-cols-3 gap-2 sm:gap-6"
         >
           {[
-            { k: "500+", v: "Animations" },
-            { k: "27", v: "Categories" },
-            { k: "Weekly", v: "New drops" },
+            { k: String(animations.length), v: "Animations" },
+            { k: "2", v: "SwiftUI + Flutter" },
+            { k: "iOS 27", v: "Latest APIs" },
           ].map((s) => (
             <div
               key={s.v}

@@ -46,7 +46,7 @@ export default function BlogIndex() {
                 <span>·</span>
                 <span>{post.readingMinutes} min read</span>
                 {post.status === "draft" && (
-                  <span className="ml-auto rounded-full bg-patreon/10 px-2 py-0.5 font-medium text-patreon">
+                  <span className="ml-auto rounded-full bg-brand/10 px-2 py-0.5 font-medium text-brand">
                     Coming soon
                   </span>
                 )}
@@ -70,11 +70,11 @@ export default function BlogIndex() {
 
         <div className="mt-14 rounded-3xl border border-surface-border p-8 text-center">
           <h3 className="text-lg font-semibold">
-            More posts coming every week
+            More posts coming soon
           </h3>
           <p className="mt-2 text-sm text-muted">
-            Subscribe on Patreon to get notified when each article goes live —
-            plus the source code that backs every tutorial.
+            Follow @zelcodes.io on Instagram to hear when each article goes live,
+            and get the source code behind every tutorial with Zelcodes Pro.
           </p>
         </div>
       </div>

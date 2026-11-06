@@ -1,9 +1,9 @@
 # Zelcodes — SwiftUI animation library · website
 
-> 500+ production-ready SwiftUI animations, transitions and UI effects.
-> Browse the showcase → unlock the source on Patreon → ship polished iOS apps faster.
+> Polished iOS UI animations in SwiftUI (iOS 27) with 1:1 Flutter ports.
+> Browse the showcase → buy one ($3.99) or get Zelcodes Pro on Polar → ship polished apps faster.
 
-**Live**: https://akashkottil.github.io/zelcodes-web/
+**Live**: https://zelcodes-io.github.io/
 **Brand & designer assets**: https://github.com/akashkottil/Zelcodes-Graphic_Designer
 
 ---
@@ -13,7 +13,7 @@
 The marketing website for **Zelcodes**, a curated SwiftUI animation library by Akash Kottil. It's a fully static Next.js site that:
 
 - Showcases every animation in the library with a bespoke in-browser preview (no GIFs, no videos — pure Framer Motion re-creations of each real SwiftUI project)
-- Funnels viewers to Patreon, where subscribers get access to the actual Xcode project sources
+- Funnels viewers to Polar checkout: single animations ($3.99, zip download) and Zelcodes Pro (private GitHub repo + zip)
 - Doubles as the public face of the Zelcodes brand — logo, wordmark, typography, mesh backgrounds, glassmorphism surfaces
 
 ---
@@ -21,11 +21,11 @@ The marketing website for **Zelcodes**, a curated SwiftUI animation library by A
 ## Features
 
 - **Swipeable hero carousel** — drag / arrow / auto-advance through 7 featured animations with a spring tuned deck
-- **27 bespoke animation previews** — each card mirrors what the real SwiftUI project actually does (Apple Store tab scroll, Dynamic Island toast, Photos grid-to-detail, Morphing tab bar, …)
+- **31 animations with real cover images** from the Zelcodes reels, each with its own $3.99 Polar checkout and detail page
 - **Category filtering** on the animation library
 - **Per-animation detail pages** (prerendered statically)
 - **Blog scaffold** ready for SwiftUI tutorials
-- **Liquid Orbit animated logo** (Framer Motion SVG — dark glass orb with a living mesh gradient and a photon tracing a diagonal elliptical orbit)
+- **Handwritten "zelcodes" logo** in liquid glass (ink version in light mode)
 - **Liquid-glass wordmark** with a continuous diagonal colour gradient clipped across the whole word
 - **Light + dark mode** via `next-themes` (system-aware)
 - **SEO**: metadata, OpenGraph, sitemap, robots, semantic headings
@@ -88,35 +88,31 @@ src/
 │   ├── privacy/page.tsx        Privacy policy
 │   ├── terms/page.tsx          Terms of service
 │   ├── blog/page.tsx           Blog index (placeholder posts)
-│   └── animations/[slug]/      Per-animation detail (27 static pages)
+│   └── animations/[slug]/      Per-animation detail (31 static pages)
 │
 ├── components/
 │   ├── Hero.tsx                Hero section with HeroCarousel
 │   ├── HeroCarousel.tsx        Swipeable deck of featured animations
-│   ├── AnimationShowcase.tsx   Filterable grid of all 27
-│   ├── AnimationCard.tsx       Card with preview + tags
-│   ├── HowItWorks.tsx / PatreonSection.tsx / CredibilitySection.tsx / CTASection.tsx
+│   ├── AnimationShowcase.tsx   Filterable grid of all 31
+│   ├── AnimationCard.tsx       Card with cover image, price + tags
+│   ├── HowItWorks.tsx / PricingSection.tsx / CredibilitySection.tsx / CTASection.tsx
 │   ├── Navbar.tsx / Footer.tsx
-│   ├── Logotype.tsx            "zelc{orb}des" inline-orb liquid-glass lockup
-│   ├── Wordmark.tsx            Standalone wordmark (gradient)
-│   ├── AnimatedLogo.tsx        Liquid Orbit mark — Framer Motion SVG
+│   ├── Logo.tsx                Handwritten "zelcodes" logo (glass in dark mode, ink in light mode)
 │   ├── MeshGradient.tsx        Animated background mesh
 │   ├── ThemeProvider.tsx / ThemeToggle.tsx
-│   ├── BrandIcons.tsx          GitHub / X / YouTube inline SVGs
-│   └── previews/
-│       └── AnimationPreview.tsx  ← 27 bespoke previews (one per slug)
+│   ├── BrandIcons.tsx          Instagram / Facebook inline SVGs
 │
 └── lib/
-    ├── animations.ts           Metadata for all 27 animations
+    ├── animations.ts           Metadata for all 31 animations (image, keyword, Polar checkout)
     ├── blog.ts                 Blog post metadata
-    └── links.ts                Patreon / GitHub / social URLs
+    └── links.ts                Polar checkout / Instagram / Facebook / contact
 ```
 
 ---
 
 ## Design system
 
-The brand language (colours, typography, Liquid Orbit construction, glass recipes, motion easings, poster rules) is documented in a separate repo:
+The brand language (colours, typography, the logo, glass recipes, motion easings, poster rules) is documented in a separate repo:
 
 **https://github.com/akashkottil/Zelcodes-Graphic_Designer**
 
@@ -135,30 +131,17 @@ This site is configured for static deployment to GitHub Pages via GitHub Actions
 ### How it works
 
 - `next.config.ts` uses `output: "export"` to produce a fully static site in `./out`.
-- `basePath` and `assetPrefix` are set from the `NEXT_PUBLIC_BASE_PATH` env var (only in production) — so **dev** still runs at `/`, while the **deployed** build is served from `/zelcodes-web/`.
-- A workflow at `.github/workflows/deploy.yml` builds and publishes the site on every push to `main`.
+- The site is the organisation site **https://zelcodes-io.github.io/** (repo `zelcodes-io/zelcodes-io.github.io`), so it is served from the root and no `basePath` is needed. `NEXT_PUBLIC_BASE_PATH` is still supported if the site ever moves to a sub-path.
+- A workflow at `.github/workflows/deploy.yml` builds and publishes the site on every push to `main` (Settings → Pages → Source: GitHub Actions).
 - `public/.nojekyll` disables Jekyll processing so Pages serves the `_next/` asset directory correctly.
-
-### One-time setup
-
-1. Push this repo to `https://github.com/akashkottil/zelcodes-web`.
-2. In the GitHub repo → **Settings → Pages → Source**, choose **GitHub Actions**.
-3. Push any commit to `main` — the workflow builds and deploys automatically.
-4. Site will be live at **https://akashkottil.github.io/zelcodes-web/** (~1-2 min after the workflow finishes).
-
-### Custom URL
-
-If you want the site at `https://akashkottil.github.io/zelcodes` instead of `/zelcodes-web`, either:
-
-- **Rename the repo** to `zelcodes`, and update the `NEXT_PUBLIC_BASE_PATH` in `.github/workflows/deploy.yml` to `/zelcodes`. Or
-- **Add a custom domain** via `CNAME` and point it at `akashkottil.github.io`.
+- Custom domain later: add it in Settings → Pages and update `SITE_URL` in `src/lib/links.ts`.
 
 ---
 
 ## Writing new animations
 
-1. Add metadata to `src/lib/animations.ts` (slug, title, description, tags, difficulty, accent colours).
-2. Add a bespoke preview to `src/components/previews/AnimationPreview.tsx` — a new `case "<slug>":` in the `Dispatcher` switch, plus a new component that visually mirrors what the real SwiftUI project does.
+1. Add the animation to `src/lib/animations.ts` (slug, keyword, title, tagline, description, image in `public/animations/`, and its Polar checkout link).
+2. Add its 3:4 cover image (the reel cover without the CTA, ~800 px wide) to `public/animations/<keyword>.jpg`.
 3. Build — the detail page `/animations/<slug>/` is generated automatically via `generateStaticParams`.
 
 ---
@@ -175,4 +158,4 @@ If you want the site at `https://akashkottil.github.io/zelcodes` instead of `/ze
 
 Code in this repository is under the terms in [LICENSE](LICENSE) (if present). The **Zelcodes brand, logo, wordmark, typography lockups, and poster artwork** are the property of Akash Kottil and are **not** covered by any OSS licence — see the [Terms of Service](src/app/terms/page.tsx) for details.
 
-The **animation library source code** (the actual Xcode projects shown on the site) is distributed separately via Patreon and governed by its own licence described on [patreon.com/zelcodes](https://www.patreon.com/zelcodes).
+The **animation source code** (the Xcode projects and Flutter ports shown on the site) is sold separately on Polar and covered by the licence in the Zelcodes Pro repository.

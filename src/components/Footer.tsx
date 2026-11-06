@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { Mail } from "lucide-react";
-import { GitHubIcon, XIcon, YouTubeIcon } from "./BrandIcons";
-import { Logotype } from "./Logotype";
+import { FacebookIcon, InstagramIcon } from "./BrandIcons";
+import { Logo } from "./Logo";
 import {
-  PATREON_URL,
-  GITHUB_URL,
-  TWITTER_URL,
-  YOUTUBE_URL,
   CONTACT_EMAIL,
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
+  PRO_CHECKOUT_URL,
 } from "@/lib/links";
 
 export function Footer() {
@@ -18,7 +17,8 @@ export function Footer() {
       title: "Product",
       links: [
         { href: "/#animations", label: "Animations" },
-        { href: PATREON_URL, label: "Patreon", external: true },
+        { href: "/#pricing", label: "Pricing" },
+        { href: PRO_CHECKOUT_URL, label: "Get Pro", external: true },
         { href: "/#how-it-works", label: "How it works" },
       ],
     },
@@ -26,7 +26,8 @@ export function Footer() {
       title: "Resources",
       links: [
         { href: "/blog", label: "Blog" },
-        { href: GITHUB_URL, label: "GitHub", external: true },
+        { href: INSTAGRAM_URL, label: "Instagram", external: true },
+        { href: FACEBOOK_URL, label: "Facebook", external: true },
         { href: `mailto:${CONTACT_EMAIL}`, label: "Contact" },
       ],
     },
@@ -45,39 +46,30 @@ export function Footer() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link href="/" className="flex items-center">
-              <Logotype fontSize={28} />
+              <Logo height={40} />
             </Link>
             <p className="mt-4 max-w-xs text-sm text-muted">
-              Production-ready SwiftUI animations, transitions and UI effects
-              for iOS and macOS developers.
+              Polished iOS UI animations in SwiftUI and Flutter, for iOS and
+              Flutter developers. New reels every week on Instagram.
             </p>
             <div className="mt-5 flex items-center gap-2">
               <a
-                href={GITHUB_URL}
-                aria-label="GitHub"
+                href={INSTAGRAM_URL}
+                aria-label="Instagram"
                 target="_blank"
                 rel="noreferrer"
                 className="glass inline-flex h-9 w-9 items-center justify-center rounded-full transition hover:scale-105"
               >
-                <GitHubIcon size={15} />
+                <InstagramIcon size={15} />
               </a>
               <a
-                href={TWITTER_URL}
-                aria-label="X / Twitter"
+                href={FACEBOOK_URL}
+                aria-label="Facebook"
                 target="_blank"
                 rel="noreferrer"
                 className="glass inline-flex h-9 w-9 items-center justify-center rounded-full transition hover:scale-105"
               >
-                <XIcon size={13} />
-              </a>
-              <a
-                href={YOUTUBE_URL}
-                aria-label="YouTube"
-                target="_blank"
-                rel="noreferrer"
-                className="glass inline-flex h-9 w-9 items-center justify-center rounded-full transition hover:scale-105"
-              >
-                <YouTubeIcon size={15} />
+                <FacebookIcon size={15} />
               </a>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
@@ -123,7 +115,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-surface-border/70 pt-6 text-xs text-muted sm:flex-row sm:items-center">
           <span>
-            © {year} Zelcodes · Built by Akash Kottil — for SwiftUI developers.
+            © {year} Zelcodes · Built by Akash Kottil for SwiftUI and Flutter developers.
           </span>
           <span>Crafted in Kerala, India · Shipped worldwide.</span>
         </div>

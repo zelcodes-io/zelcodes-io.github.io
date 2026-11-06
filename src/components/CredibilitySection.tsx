@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Rocket, ShieldCheck, Zap } from "lucide-react";
+import { Code2, Layers, Rocket, Sparkles } from "lucide-react";
 
 const traits = [
   {
@@ -10,19 +10,19 @@ const traits = [
     body: "Hand-written, no external dependencies. Reads like the docs.",
   },
   {
-    icon: Zap,
-    title: "60fps on device",
-    body: "Every animation is profiled on a real iPhone — never just the simulator.",
+    icon: Sparkles,
+    title: "Built for iOS 27",
+    body: "Liquid Glass, Dynamic Island and the latest SwiftUI APIs.",
   },
   {
-    icon: ShieldCheck,
-    title: "Production-tested",
-    body: "Patterns taken from shipped apps, not Dribbble concepts.",
+    icon: Layers,
+    title: "SwiftUI + Flutter",
+    body: "Every animation is also ported 1:1 to Flutter, in the same purchase.",
   },
   {
     icon: Rocket,
-    title: "Weekly drops",
-    body: "A fresh animation lands on Patreon every week of the year.",
+    title: "Growing library",
+    body: "New animations are added regularly, and Pro members get every one.",
   },
 ];
 

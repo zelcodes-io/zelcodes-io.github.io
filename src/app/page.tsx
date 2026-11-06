@@ -1,7 +1,7 @@
 import { Hero } from "@/components/Hero";
 import { AnimationShowcase } from "@/components/AnimationShowcase";
 import { HowItWorks } from "@/components/HowItWorks";
-import { PatreonSection } from "@/components/PatreonSection";
+import { PricingSection } from "@/components/PricingSection";
 import { CredibilitySection } from "@/components/CredibilitySection";
 import { CTASection } from "@/components/CTASection";
 
@@ -11,7 +11,7 @@ export default function HomePage() {
       <Hero />
       <AnimationShowcase />
       <HowItWorks />
-      <PatreonSection />
+      <PricingSection />
       <CredibilitySection />
       <CTASection />
     </>

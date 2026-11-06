@@ -1,23 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Compass, MousePointerClick, Unlock } from "lucide-react";
+import { Compass, CreditCard, Download } from "lucide-react";
 
 const steps = [
   {
     icon: Compass,
-    title: "Browse the library",
-    body: "Filter by category, difficulty or tag. Preview each animation directly in the browser — no downloads, no sign-up.",
+    title: "Find an animation",
+    body: "Browse the library here, or spot one in a reel on Instagram (@zelcodes.io). Every animation has a preview and a full description.",
   },
   {
-    icon: MousePointerClick,
-    title: "Pick what you need",
-    body: "Click into any animation to read its description, see demo videos and understand the techniques behind it.",
+    icon: CreditCard,
+    title: "Buy one, or join Pro",
+    body: "Get a single animation for $3.99, or every animation with Zelcodes Pro. Secure checkout by Polar takes about a minute.",
   },
   {
-    icon: Unlock,
-    title: "Unlock the source on Patreon",
-    body: "One subscription unlocks every source file, weekly new drops, and request access to future animations.",
+    icon: Download,
+    title: "Get the code instantly",
+    body: "Download the SwiftUI project and Flutter port right away. Pro members also get invited to the private GitHub repo with every update.",
   },
 ];
 
@@ -37,8 +37,8 @@ export function HowItWorks() {
           steps
         </h2>
         <p className="mt-4 text-muted">
-          Zelcodes is a showcase first — you can explore everything without
-          signing up. When you want the code, Patreon does the rest.
+          Explore everything without signing up. When you want the code,
+          checkout takes a minute and the download is instant.
         </p>
       </div>
 

@@ -3,14 +3,13 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
-import { Logotype } from "./Logotype";
-import { PATREON_URL } from "@/lib/links";
+import { Logo } from "./Logo";
+import { PRO_CHECKOUT_URL } from "@/lib/links";
 
 const links = [
   { href: "/#animations", label: "Animations" },
   { href: "/#how-it-works", label: "How it works" },
-  { href: "/#patreon", label: "Patreon" },
-  { href: "/blog", label: "Blog" },
+  { href: "/#pricing", label: "Pricing" },
 ];
 
 export function Navbar() {
@@ -28,7 +27,7 @@ export function Navbar() {
             className="group flex items-center"
             aria-label="Zelcodes home"
           >
-            <Logotype fontSize={22} />
+            <Logo height={30} />
           </Link>
 
           <nav className="hidden items-center gap-1 md:flex">
@@ -46,12 +45,12 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <a
-              href={PATREON_URL}
+              href={PRO_CHECKOUT_URL}
               target="_blank"
               rel="noreferrer"
               className="hidden rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition hover:opacity-90 sm:inline-block"
             >
-              Join Patreon
+              Get Pro
             </a>
           </div>
         </div>

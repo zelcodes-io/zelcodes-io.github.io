@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { PATREON_URL } from "@/lib/links";
+import { PRO_CHECKOUT_URL } from "@/lib/links";
 
 export function CTASection() {
   return (
@@ -38,18 +38,19 @@ export function CTASection() {
             Stop building UI from scratch.
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-muted">
-            Your app deserves animations that feel like Apple built them. Join
-            Zelcodes on Patreon and ship the polish that makes users notice.
+            Your app deserves animations that feel like Apple built them. Get
+            every Zelcodes animation in SwiftUI and Flutter, and ship the polish
+            that makes users notice.
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href={PATREON_URL}
+              href={PRO_CHECKOUT_URL}
               target="_blank"
               rel="noreferrer"
               className="group inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3.5 text-sm font-medium text-background transition hover:opacity-90"
             >
-              Get Full Access
+              Get Zelcodes Pro
               <ArrowRight
                 size={16}
                 className="transition group-hover:translate-x-0.5"

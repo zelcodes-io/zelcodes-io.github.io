@@ -1,11 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Lock, ArrowUpRight } from "lucide-react";
-import { animations, getAnimation } from "@/lib/animations";
-import { AnimationPreview } from "@/components/previews/AnimationPreview";
+import { ArrowLeft, ArrowUpRight, Check, Download } from "lucide-react";
+import { animations, getAnimation, SINGLE_PRICE } from "@/lib/animations";
 import { MeshGradient } from "@/components/MeshGradient";
-import { PATREON_URL } from "@/lib/links";
+import { INSTAGRAM_URL, PRO_CHECKOUT_URL, PRO_MONTHLY_PRICE } from "@/lib/links";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -13,21 +13,19 @@ export function generateStaticParams() {
   return animations.map((a) => ({ slug: a.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const animation = getAnimation(slug);
   if (!animation) return {};
-
   return {
-    title: `${animation.title} — SwiftUI animation`,
-    description: animation.longDescription,
-    alternates: { canonical: `/animations/${animation.slug}` },
+    title: `${animation.title}: SwiftUI + Flutter animation`,
+    description: `${animation.tagline}. ${animation.longDescription}`,
+    alternates: { canonical: `/animations/${animation.slug}/` },
     openGraph: {
       title: `${animation.title} · Zelcodes`,
-      description: animation.longDescription,
+      description: animation.tagline,
       type: "article",
+      images: [{ url: animation.image, width: 800, height: 1067 }],
     },
   };
 }
@@ -37,11 +35,20 @@ export default async function AnimationDetail({ params }: PageProps) {
   const animation = getAnimation(slug);
   if (!animation) notFound();
 
-  const related = animations
-    .filter(
-      (a) => a.slug !== animation.slug && a.category === animation.category,
-    )
-    .slice(0, 3);
+  const sameCategory = animations.filter(
+    (a) => a.slug !== animation.slug && a.category === animation.category,
+  );
+  const related = [
+    ...sameCategory,
+    ...animations.filter((a) => a.slug !== animation.slug && !sameCategory.includes(a)),
+  ].slice(0, 3);
+
+  const included = [
+    `Complete SwiftUI project (${animation.platform.replace("SwiftUI · ", "")}, Xcode)`,
+    "1:1 Flutter port of the same animation",
+    "No third-party dependencies",
+    "Use in personal and commercial apps",
+  ];
 
   return (
     <div className="relative">
@@ -54,86 +61,89 @@ export default async function AnimationDetail({ params }: PageProps) {
           <ArrowLeft size={14} /> Back to library
         </Link>
 
-        <header className="mt-8 grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
+        <header className="mt-8 grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-12">
           <div className="glass relative overflow-hidden rounded-[28px] p-3">
-            <div className="h-[320px] overflow-hidden rounded-[22px] sm:h-[420px]">
-              <AnimationPreview
-                animation={animation}
-                className="h-full w-full"
-              />
-            </div>
+            <img
+              src={animation.image}
+              alt={`${animation.title} animation preview`}
+              className="aspect-[3/4] w-full rounded-[22px] object-cover"
+            />
           </div>
 
           <div className="flex flex-col justify-center">
             <span className="text-xs font-medium tracking-wide text-muted uppercase">
-              {animation.category}
+              {animation.category} · {animation.platform} + Flutter
             </span>
             <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
               {animation.title}
             </h1>
+            <p className="mt-2 text-lg text-gradient font-medium">{animation.tagline}</p>
             <p className="mt-4 text-muted">{animation.longDescription}</p>
 
-            <div className="mt-5 flex flex-wrap gap-2">
-              {Array.from(
-                new Set([animation.difficulty, ...animation.tags]),
-              ).map((t) => (
-                <span
-                  key={t}
-                  className="rounded-full border border-surface-border px-2.5 py-1 text-xs"
-                >
-                  {t}
-                </span>
+            <ul className="mt-6 grid gap-2">
+              {included.map((item) => (
+                <li key={item} className="flex items-start gap-2.5 text-sm">
+                  <Check size={16} className="mt-0.5 shrink-0 text-brand" />
+                  {item}
+                </li>
               ))}
-            </div>
+            </ul>
 
-            <div className="mt-8 space-y-3">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
-                href={PATREON_URL}
+                href={animation.checkoutUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-patreon px-6 py-3 text-sm font-medium text-white shadow-lg shadow-patreon/25 transition hover:brightness-110 sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition hover:opacity-90"
               >
-                <Lock size={14} /> Unlock source on Patreon
+                <Download size={14} /> Buy this animation · {SINGLE_PRICE}
               </a>
-              <p className="text-xs text-muted">
-                The full Xcode project ships with the Patreon subscription —
-                one sub unlocks every animation.
-              </p>
+              <a
+                href={PRO_CHECKOUT_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-surface-border bg-surface px-6 py-3 text-sm font-medium transition hover:border-brand/60"
+              >
+                Get all {animations.length} with Pro · {PRO_MONTHLY_PRICE}/mo
+              </a>
             </div>
+            <p className="mt-3 text-xs text-muted">
+              Secure checkout by Polar · instant download · taxes calculated at checkout.
+              Saw it on{" "}
+              <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="underline">
+                Instagram
+              </a>
+              ? The reel keyword is <strong>“{animation.keyword}”</strong>.
+            </p>
           </div>
         </header>
 
-        {related.length > 0 && (
-          <section className="mt-20">
-            <h2 className="text-xl font-semibold tracking-tight">
-              More in {animation.category}
-            </h2>
-            <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              {related.map((r) => (
-                <Link
-                  key={r.slug}
-                  href={`/animations/${r.slug}`}
-                  className="glass group relative block overflow-hidden rounded-2xl p-2 transition hover:-translate-y-0.5"
-                >
-                  <div className="h-36 overflow-hidden rounded-xl">
-                    <AnimationPreview
-                      animation={r}
-                      compact
-                      className="h-full w-full"
-                    />
-                  </div>
-                  <div className="flex items-center justify-between p-3">
-                    <span className="text-sm font-semibold">{r.title}</span>
-                    <ArrowUpRight
-                      size={14}
-                      className="text-muted transition group-hover:text-foreground"
-                    />
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
+        <section className="mt-20">
+          <h2 className="text-xl font-semibold tracking-tight">More animations</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {related.map((r) => (
+              <Link
+                key={r.slug}
+                href={`/animations/${r.slug}`}
+                className="glass group relative block overflow-hidden rounded-2xl p-2 transition hover:-translate-y-0.5"
+              >
+                <img
+                  src={r.image}
+                  alt={`${r.title} animation preview`}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full rounded-xl object-cover object-[50%_64%]"
+                />
+                <div className="flex items-center justify-between p-3">
+                  <span className="text-sm font-semibold">{r.title}</span>
+                  <ArrowUpRight
+                    size={14}
+                    className="text-muted transition group-hover:text-foreground"
+                  />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );

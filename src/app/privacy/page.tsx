@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/privacy" },
 };
 
-const UPDATED = "April 18, 2026";
+const UPDATED = "November 7, 2026";
 
 export default function PrivacyPage() {
   return (
@@ -33,9 +33,10 @@ export default function PrivacyPage() {
         <article className="prose-legal mx-auto mt-14 max-w-2xl space-y-10">
           <Section title="1. What Zelcodes is">
             Zelcodes (“the site”, “we”, “us”) is a marketing and showcase
-            website for a library of SwiftUI animations. Full source code is
-            distributed via third-party platforms (Patreon, GitHub) — not from
-            this site directly.
+            website for a library of SwiftUI and Flutter animations. Source code
+            is sold through Polar (our merchant of record) and delivered as
+            downloads and via a private GitHub repository, not from this site
+            directly.
           </Section>
 
           <Section title="2. What we collect on this website">
@@ -70,15 +71,17 @@ export default function PrivacyPage() {
             </p>
             <ul>
               <li>
-                <strong>Patreon</strong> — for subscriptions and access to
-                animation source code.
+                <strong>Polar</strong> (polar.sh): checkout, payments, taxes,
+                subscriptions and downloads. Polar receives the details you
+                enter at checkout.
               </li>
               <li>
-                <strong>GitHub</strong> — for hosting code repositories.
+                <strong>GitHub</strong>: the private Zelcodes Pro repository
+                (Pro members connect their GitHub account through Polar).
               </li>
               <li>
-                <strong>YouTube / X</strong> — for embedded demo videos and
-                social posts.
+                <strong>Instagram / Facebook</strong>: our animation reels and
+                posts (@zelcodes.io).
               </li>
             </ul>
             <p>
@@ -123,7 +126,7 @@ export default function PrivacyPage() {
           <Section title="7. Changes to this policy">
             We’ll update the “last updated” date at the top of this page if we
             meaningfully change anything. For significant changes, we’ll also
-            mention it in the next newsletter on Patreon.
+            mention it on Instagram (@zelcodes.io).
           </Section>
 
           <Section title="8. Contact">

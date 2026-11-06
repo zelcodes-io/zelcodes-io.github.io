@@ -17,16 +17,18 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-const siteUrl = "https://zelcodes.com";
+import { SITE_URL } from "@/lib/links";
+
+const siteUrl = SITE_URL;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Zelcodes — 500+ SwiftUI Animations for iOS Developers",
+    default: "Zelcodes: iOS animations in SwiftUI and Flutter",
     template: "%s · Zelcodes",
   },
   description:
-    "A premium library of production-ready SwiftUI animations, transitions and UI effects. Browse the showcase, copy the code, ship faster.",
+    "31 polished iOS UI animations (Liquid Glass tab bars, Dynamic Island toasts, hero transitions, paywalls) as complete SwiftUI projects with 1:1 Flutter ports. $3.99 each, or all of them with Zelcodes Pro.",
   keywords: [
     "SwiftUI animations",
     "iOS UI animations",
@@ -34,6 +36,9 @@ export const metadata: Metadata = {
     "SwiftUI transitions",
     "iOS developer tools",
     "SwiftUI components",
+    "Flutter animations",
+    "Liquid Glass SwiftUI",
+    "Dynamic Island SwiftUI",
     "Zelcodes",
   ],
   authors: [{ name: "Akash Kottil", url: siteUrl }],
@@ -42,17 +47,18 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "Zelcodes — 500+ SwiftUI Animations for iOS Developers",
+    title: "Zelcodes: iOS animations in SwiftUI and Flutter",
     description:
-      "Production-ready SwiftUI animations. Browse the showcase, unlock the source on Patreon.",
+      "Polished iOS UI animations as complete SwiftUI projects with Flutter ports. Buy one for $3.99, or get every one with Zelcodes Pro.",
     siteName: "Zelcodes",
+    images: [{ url: "/og.jpg", width: 1200, height: 675, alt: "Zelcodes" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zelcodes — SwiftUI Animations",
+    title: "Zelcodes: iOS animations in SwiftUI and Flutter",
     description:
-      "Production-ready SwiftUI animations. Browse the showcase, unlock the source on Patreon.",
-    creator: "@zelcodes",
+      "Polished iOS UI animations as complete SwiftUI projects with Flutter ports.",
+    images: ["/og.jpg"],
   },
   robots: {
     index: true,

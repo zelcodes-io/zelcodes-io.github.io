@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { MeshGradient } from "@/components/MeshGradient";
-import { CONTACT_EMAIL, PATREON_URL } from "@/lib/links";
+import { CONTACT_EMAIL } from "@/lib/links";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/terms" },
 };
 
-const UPDATED = "April 18, 2026";
+const UPDATED = "November 7, 2026";
 
 export default function TermsPage() {
   return (
@@ -25,25 +25,25 @@ export default function TermsPage() {
           </h1>
           <p className="mt-3 text-sm text-muted">Last updated {UPDATED}</p>
           <p className="mt-6 text-muted">
-            The short version: browse the showcase freely, unlock the source on
-            Patreon, use it in your apps, don’t redistribute the raw library.
+            The short version: browse the showcase freely, buy the source
+            through Polar, use it in your apps, don’t redistribute the raw code.
           </p>
         </header>
 
         <article className="prose-legal mx-auto mt-14 max-w-2xl space-y-10">
           <Section title="1. Who we are">
-            Zelcodes (“we”, “us”) is an independent library of SwiftUI
-            animations created by Akash Kottil. This website is the public
-            showcase; the source-code distribution happens via{" "}
-            <a href={PATREON_URL} target="_blank" rel="noreferrer">
-              Patreon
+            Zelcodes (“we”, “us”) is an independent library of SwiftUI and
+            Flutter animations created by Akash Kottil. This website is the
+            public showcase; the source code is sold through{" "}
+            <a href="https://polar.sh" target="_blank" rel="noreferrer">
+              Polar
             </a>
             .
           </Section>
 
           <Section title="2. Agreement">
             By using this website you agree to these terms. If you don’t agree,
-            you shouldn’t use the site or subscribe on Patreon.
+            you shouldn’t use the site or buy from Zelcodes.
           </Section>
 
           <Section title="3. The showcase is free">
@@ -64,15 +64,15 @@ export default function TermsPage() {
             </ul>
           </Section>
 
-          <Section title="4. Patreon source code — your license">
+          <Section title="4. Source code: your licence">
             <p>
-              When you subscribe to the Zelcodes Patreon tier, you receive a
-              non-exclusive, non-transferable, worldwide licence to:
+              When you buy a single animation or subscribe to Zelcodes Pro, you
+              receive a non-exclusive, non-transferable, worldwide licence to:
             </p>
             <ul>
               <li>
                 <strong>Use the source code</strong> in unlimited personal and
-                commercial apps, free or paid, on any Apple platform.
+                commercial apps and client projects, free or paid, on any platform.
               </li>
               <li>
                 <strong>Modify and adapt</strong> the code to fit your
@@ -91,8 +91,8 @@ export default function TermsPage() {
                 animations must be embedded inside your own product.
               </li>
               <li>
-                Share your Patreon access, repository credentials, or
-                downloaded files with non-subscribers.
+                Share your downloads, your access to the private Zelcodes Pro
+                repository, or your account with anyone else.
               </li>
               <li>
                 Use the Zelcodes name or brand marks to imply endorsement of
@@ -102,18 +102,20 @@ export default function TermsPage() {
           </Section>
 
           <Section title="5. Subscriptions, billing and refunds">
-            Subscriptions, billing, taxes, cancellations, and refunds are
-            handled by Patreon under{" "}
+            Orders are processed by Polar (polar.sh), our online reseller and
+            merchant of record, under{" "}
             <a
-              href="https://www.patreon.com/policy/legal"
+              href="https://polar.sh/legal/terms"
               target="_blank"
               rel="noreferrer"
             >
               their terms
             </a>
-            . We don’t process payments or store payment details ourselves.
-            If you need a refund, please use Patreon’s standard refund flow;
-            we’re happy to help mediate if something goes wrong.
+            . Polar handles payments, sales tax / VAT / GST, invoices,
+            cancellations and refunds; we never see or store your card
+            details. You can cancel a Pro subscription at any time from the
+            Polar customer portal. For refund requests, contact Polar or email
+            us and we’ll help.
           </Section>
 
           <Section title="6. Intellectual property">
@@ -138,20 +140,20 @@ export default function TermsPage() {
           <Section title="8. Limitation of liability">
             To the maximum extent allowed by law, the total liability of
             Zelcodes for any claim related to these terms or your use of the
-            site is capped at the total fees you’ve paid us via Patreon in the
+            site is capped at the total fees you’ve paid for Zelcodes in the
             12 months preceding the claim.
           </Section>
 
           <Section title="9. Termination">
-            We may suspend or terminate your access to the Patreon repository
-            if you materially breach these terms (for example, redistributing
-            the source). You can cancel your subscription at any time via
-            Patreon.
+            We may suspend or terminate your access to the Zelcodes Pro
+            repository if you materially breach these terms (for example,
+            redistributing the source). You can cancel your subscription at any
+            time from the Polar customer portal.
           </Section>
 
           <Section title="10. Changes to these terms">
             When these terms change in a meaningful way, we’ll update the
-            “last updated” date and note the change in the next Patreon post.
+            “last updated” date and mention the change on Instagram (@zelcodes.io).
             Continued use of the site or subscription after an update is taken
             as acceptance of the new terms.
           </Section>

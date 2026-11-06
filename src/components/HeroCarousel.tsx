@@ -1,14 +1,16 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 
 import { useCallback, useEffect, useState } from "react";
 import { motion, type PanInfo } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { animations, type Animation } from "@/lib/animations";
-import { AnimationPreview } from "./previews/AnimationPreview";
 
 const featuredSlugs = [
-  "apple-tv-carousel",
   "dynamic-island-toast",
+  "qr-scanner",
+  "ap-transition",
+  "apple-tv-carousel",
   "morphing-tab-bar",
   "photos-transition",
   "stock-scroller",
@@ -45,7 +47,7 @@ export function HeroCarousel() {
 
   return (
     <div
-      className="relative mx-auto mt-14 h-[400px] w-full max-w-3xl md:h-[440px] md:max-w-4xl"
+      className="relative mx-auto mt-14 h-[470px] w-full max-w-3xl md:h-[510px] md:max-w-4xl"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={() => setPaused(true)}
@@ -90,10 +92,12 @@ export function HeroCarousel() {
             }}
           >
             <div className="overflow-hidden rounded-[26px] border border-black/5 bg-background shadow-[0_30px_70px_-28px_rgba(17,17,44,0.35)] ring-1 ring-black/5 dark:border-white/10 dark:ring-white/5 dark:shadow-[0_30px_70px_-12px_rgba(0,0,0,0.7)]">
-              <div className="m-2 h-52 overflow-hidden rounded-[20px] md:h-56">
-                <AnimationPreview
-                  animation={animation}
-                  className="h-full w-full"
+              <div className="m-2 aspect-[4/5] overflow-hidden rounded-[20px]">
+                <img
+                  src={animation.image}
+                  alt={`${animation.title} animation preview`}
+                  draggable={false}
+                  className="h-full w-full object-cover object-top"
                 />
               </div>
               <div className="flex items-center justify-between gap-3 px-4 pb-4">
@@ -106,7 +110,7 @@ export function HeroCarousel() {
                   </div>
                 </div>
                 <span className="shrink-0 rounded-full bg-foreground/5 px-2 py-0.5 text-[10px] font-medium text-muted">
-                  {animation.difficulty}
+                  {animation.platform.replace("SwiftUI · ", "")}
                 </span>
               </div>
             </div>

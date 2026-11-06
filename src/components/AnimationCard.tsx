@@ -1,10 +1,11 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { Animation } from "@/lib/animations";
-import { AnimationPreview } from "./previews/AnimationPreview";
+import { SINGLE_PRICE } from "@/lib/animations";
 
 type Props = {
   animation: Animation;
@@ -29,11 +30,21 @@ export function AnimationCard({ animation, index = 0 }: Props) {
         aria-label={`${animation.title} — view details`}
         className="glass relative block overflow-hidden rounded-3xl p-3 transition duration-300 hover:-translate-y-1 hover:ring-1 hover:ring-brand/40"
       >
-        <div className="relative h-44 overflow-hidden rounded-2xl sm:h-48">
-          <AnimationPreview animation={animation} className="h-full w-full" />
+        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+          <img
+            src={animation.image}
+            alt={`${animation.title} animation preview`}
+            loading="lazy"
+            className="h-full w-full object-cover object-[50%_64%] transition duration-500 group-hover:scale-[1.03]"
+          />
           <div className="absolute left-3 top-3 flex gap-1.5">
             <span className="glass rounded-full px-2.5 py-1 text-[11px] font-medium tracking-wide">
               {animation.difficulty}
+            </span>
+          </div>
+          <div className="absolute right-3 top-3">
+            <span className="rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur">
+              {SINGLE_PRICE}
             </span>
           </div>
         </div>
@@ -48,7 +59,7 @@ export function AnimationCard({ animation, index = 0 }: Props) {
             </span>
           </div>
           <p className="mt-1.5 line-clamp-2 text-sm text-muted">
-            {animation.description}
+            {animation.tagline}. {animation.description}
           </p>
           <div className="mt-4 flex flex-wrap gap-1.5">
             {animation.tags.slice(0, 3).map((tag) => (
