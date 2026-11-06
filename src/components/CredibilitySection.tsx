@@ -26,7 +26,7 @@ const traits = [
   },
 ];
 
-export function CredibilitySection() {
+export function CredibilitySection({ engineer = "the engineer" }: { engineer?: string }) {
   return (
     <section
       aria-labelledby="about-title"
@@ -46,9 +46,9 @@ export function CredibilitySection() {
             id="about-title"
             className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl"
           >
-            Hi, I'm{" "}
+            Hi, I&apos;m{" "}
             <span className="text-gradient">
-              Akash Kottil — the engineer
+              {engineer}
             </span>{" "}
             behind Zelcodes.
           </h2>

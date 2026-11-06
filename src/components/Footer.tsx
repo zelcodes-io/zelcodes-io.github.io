@@ -8,6 +8,7 @@ import {
   INSTAGRAM_URL,
   PRO_CHECKOUT_URL,
 } from "@/lib/links";
+import { MAKER } from "@/lib/founder";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -115,7 +116,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-surface-border/70 pt-6 text-xs text-muted sm:flex-row sm:items-center">
           <span>
-            © {year} Zelcodes · Built by Akash Kottil for SwiftUI and Flutter developers.
+            © {year} Zelcodes{MAKER !== "Zelcodes" ? ` · Built by ${MAKER}` : ""} · for SwiftUI and Flutter developers.
           </span>
           <span>Crafted in Kerala, India · Shipped worldwide.</span>
         </div>

@@ -18,6 +18,7 @@ const mono = JetBrains_Mono({
 });
 
 import { SITE_URL } from "@/lib/links";
+import { MAKER } from "@/lib/founder";
 
 const siteUrl = SITE_URL;
 
@@ -41,8 +42,8 @@ export const metadata: Metadata = {
     "Dynamic Island SwiftUI",
     "Zelcodes",
   ],
-  authors: [{ name: "Akash Kottil", url: siteUrl }],
-  creator: "Akash Kottil — Zelcodes",
+  authors: [{ name: MAKER, url: siteUrl }],
+  creator: MAKER,
   publisher: "Zelcodes",
   openGraph: {
     type: "website",

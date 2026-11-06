@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MeshGradient } from "@/components/MeshGradient";
 import { CONTACT_EMAIL } from "@/lib/links";
+import { MAKER } from "@/lib/founder";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -33,7 +34,7 @@ export default function TermsPage() {
         <article className="prose-legal mx-auto mt-14 max-w-2xl space-y-10">
           <Section title="1. Who we are">
             Zelcodes (“we”, “us”) is an independent library of SwiftUI and
-            Flutter animations created by Akash Kottil. This website is the
+            Flutter animations created by {MAKER}. This website is the
             public showcase; the source code is sold through{" "}
             <a href="https://polar.sh" target="_blank" rel="noreferrer">
               Polar
@@ -122,7 +123,7 @@ export default function TermsPage() {
             <p>
               All source code, animations, illustrations, logos, typography
               treatments, poster artwork and written content on Zelcodes are
-              the intellectual property of Akash Kottil. Swift, SwiftUI, and
+              the intellectual property of {MAKER}. Swift, SwiftUI, and
               Apple-related marks are property of Apple Inc. and are used here
               only for descriptive reference.
             </p>

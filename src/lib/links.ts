@@ -7,3 +7,4 @@ export const INSTAGRAM_URL = "https://www.instagram.com/zelcodes.io/";
 export const FACEBOOK_URL = "https://www.facebook.com/zelcodes.io";
 export const CONTACT_EMAIL = "thedeveloperkot@gmail.com";
 export const SITE_URL = "https://zelcodes-io.github.io";
+
